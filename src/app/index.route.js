@@ -8,7 +8,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controllerAs: 'main'
     })
     .state('course', {
-      url: '/courses/:courseId',
+      url: '/courses/:courseId/student/:studentId',
       templateUrl: 'app/course/showCourse.html',
       controller: 'CourseController',
       controllerAs: 'course'

@@ -10,7 +10,7 @@ export class WebDevTecService {
     return this.$http.get(this.localUrlBase + 'courses');
   }
 
-  getCourse(id) {
-    return this.$http.get(this.localUrlBase + 'courses/' + id);
+  getCourse(courseId, studentId) {
+    return this.$http.get(this.localUrlBase + 'courses/' + courseId + '?student_id=' + studentId);
   }
 }

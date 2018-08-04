@@ -9,7 +9,6 @@ export class MainController {
     this.$state = $state;
     this.Popeye = Popeye;
     this.$rootScope = $rootScope;
-    this.webDevTec = webDevTec;
     this.getCourses(webDevTec);
     this.showJumbotron = true;
   }
@@ -28,13 +27,7 @@ export class MainController {
     this.showJumbotron = !this.showJumbotron;
   }
 
-  openCourse(course) {
-    var self = this;
-    this.webDevTec.getCourse(course).success(function (data) {
-      this.course = data
-      this.$state.go('course', { courseId: this.course.id });
-    }).error(function () {
-      self.toastr.error('Could not retrieve course data');
-    });
+  goToCourse(courseId, studentId) {
+    this.$state.go('course', { courseId: courseId, studentId: studentId });
   }
 }
