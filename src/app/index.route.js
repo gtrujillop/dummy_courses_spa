@@ -7,11 +7,11 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'app/signup/signup.html',
-      controller: 'SignupController',
-      controllerAs: 'signup'
+    .state('course', {
+      url: '/courses/:courseId',
+      templateUrl: 'app/course/showCourse.html',
+      controller: 'CourseController',
+      controllerAs: 'course'
     })
   $urlRouterProvider.otherwise('/');
 }

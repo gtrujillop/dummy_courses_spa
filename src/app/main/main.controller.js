@@ -9,41 +9,32 @@ export class MainController {
     this.$state = $state;
     this.Popeye = Popeye;
     this.$rootScope = $rootScope;
-    this.current_user = angular.fromJson(sessionStorage.getItem('current_user'));
-    this.getProducts(webDevTec);
+    this.webDevTec = webDevTec;
+    this.getCourses(webDevTec);
     this.showJumbotron = true;
   }
 
-  getProducts(webDevTec) {
+  getCourses(webDevTec) {
     var self = this;
-    webDevTec.getProducts().success(function(data){
-      self.products = data;
+    webDevTec.getCourses().success(function(data){
+      self.courses = data;
     }).error(function(){
-      self.toastr.error('Could not retrieve products');
+      self.toastr.error('Could not retrieve courses');
     });
   }
 
-  signup() {
-    this.$state.go('signup');
-  }
-
+  
   hideJumbotron() {
     this.showJumbotron = !this.showJumbotron;
   }
 
-  openProductProfile(product) {
+  openCourse(course) {
     var self = this;
-    this.$rootScope.product = product;
-    // Open a modal to show the selected user profile
-    var modal = self.Popeye.openModal({
-      controller: "ProductController as prod",
-      templateUrl: "app/product/showProduct.html"
-    });
-
-    // Show a spinner while modal is resolving dependencies
-    self.showLoading = true;
-    modal.resolved.then(function() {
-      self.showLoading = false;
+    this.webDevTec.getCourse(course).success(function (data) {
+      this.course = data
+      this.$state.go('course', { courseId: this.course.id });
+    }).error(function () {
+      self.toastr.error('Could not retrieve course data');
     });
   }
 }

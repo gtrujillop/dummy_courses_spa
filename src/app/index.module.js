@@ -4,9 +4,7 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
-import { ProductController } from './product/product.controller';
-import { CartController } from './cart/cart.controller';
-import { SignupController } from './signup/signup.controller';
+import { CourseController } from './course/course.controller';
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
@@ -23,8 +21,6 @@ angular.module('marketplaceSpa', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSaniti
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .controller('SignupController', SignupController)
-  .controller('ProductController', ProductController)
-  .controller('CartController', CartController)
+  .controller('CourseController', CourseController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
