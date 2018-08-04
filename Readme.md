@@ -1,9 +1,8 @@
-# Marketplace SPA
+# Marketing Dummy Courses
 
-This is a small Angular 1.4.7 + ES6 proyect. It serves as frontend tier for a small Marketplace Web application
+This is a small Angular 1.4.7 + ES6 proyect. It serves as frontend tier for a small Courses Web application
 
 ### LIVE VERSION:
-https://marketplace-spa-getp.herokuapp.com/#/
 
 ## Getting Started:
 
@@ -17,7 +16,5 @@ After doing so, be sure that your rails server is running to provide BE services
 
 You can
 
-- create users via sign up link,
-- login / logout
-- Add / remove products from your cart
-- Purchase your products
+- See courses list
+- Access course data as student
