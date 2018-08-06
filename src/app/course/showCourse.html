@@ -1,11 +1,93 @@
-<div class="course-header">
- <h3 class="course-name">{{course.course.name}}</h3>
-</div>
-<div class="course-body">
-  <p>Id: {{ course.course.id }}</p>
-  <p>Created At: {{ course.course.created_at }}</p>
-  <p class="prod-desc">Description: {{ }}</p>
-</div>
-<div class="course-footer">
- <button class="btn btn-primary" type="button" ng-click="course.goHome()">Close</button>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to course: {{course.course.name}}</h1>
+      <p class="lead">This is a demo course for marketing purposes so that you know what we do here. Enjoy your experience.</p>
+      <span class="label label-default">Logged in as {{course.currentStudent.name}}</span>
+      <p> </p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-group" id="course-accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#course-accordion" href="#collapse1">
+              Course Info
+            </a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="course-info">
+              <p>Id: {{ course.course.id }}</p>
+              <p>Created At: {{ course.course.created_at }}</p>
+              <p>Members: {{ course.course.users.length }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#course-accordion" href="#collapse2">
+              Books
+            </a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="col-md-3">
+              <div class="thumbnail" ng-repeat="book in course.course.books">
+                <img src="../../assets/images/book_cover.jpg">
+                <div class="caption">
+                  <h5>{{book.title}}</h5>
+                  <button type="button" class="btn btn-link">Read book</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#course-accordion" href="#collapse3">
+              Members List
+            </a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+            <table class="table table-responsive">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col" ng-repeat="book in course.course.books">{{book.title}} Reading Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="user in course.course.users" ng-class="user.id == course.currentStudent.id ? 'info' : ''">
+                  <th>{{user.id}}</th>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.role}}</td>
+                  <td ng-repeat="readingTime in user.book_readings">{{readingTime.read_time}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="course-footer">
+      <button class="btn btn-primary" type="button" ng-click="course.goHome()">Close</button>
+    </div>
+  </div>
 </div>
